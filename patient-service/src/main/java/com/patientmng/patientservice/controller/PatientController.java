@@ -30,3 +30,4 @@ public class PatientController {
                 .body(patientService.createPatient(requestDto));
     }
 }
+
