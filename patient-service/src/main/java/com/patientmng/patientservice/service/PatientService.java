@@ -2,6 +2,7 @@ package com.patientmng.patientservice.service;
 
 import com.patientmng.patientservice.dto.PatientRequestDTO;
 import com.patientmng.patientservice.dto.PatientResponseDTO;
+import com.patientmng.patientservice.exception.EmailAlreadyExistsException;
 import com.patientmng.patientservice.mapper.PatientMapper;
 import com.patientmng.patientservice.repository.PatientRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,10 @@ public class PatientService {
     }
 
     public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO) {
+        if(patientRepository.existsByEmail(patientRequestDTO.email())) {
+            throw new EmailAlreadyExistsException("Email " + patientRequestDTO.email() + " is already associated with a patient");
+        }
+
         return PatientMapper
                 .toDto(patientRepository.save(
                         PatientMapper.toModel(patientRequestDTO)

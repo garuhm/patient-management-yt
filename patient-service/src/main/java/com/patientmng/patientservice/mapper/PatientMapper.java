@@ -29,10 +29,30 @@ public class PatientMapper {
     }
 
     public static void update(Patient patient, PatientRequestDTO patientRequestDTO) {
-        patient.setName(patientRequestDTO.name() != null ? patientRequestDTO.name() : patient.getName());
-        patient.setEmail(patientRequestDTO.email() != null ? patientRequestDTO.email() : patient.getEmail());
-        patient.setAddress(patientRequestDTO.address() != null ? patientRequestDTO.address() : patient.getAddress());
-        patient.setDateOfBirth(patientRequestDTO.dateOfBirth() != null ? LocalDate.parse(patientRequestDTO.dateOfBirth()) : patient.getDateOfBirth());
-        patient.setRegisteredDate(patientRequestDTO.registeredDate() != null ? LocalDate.parse(patientRequestDTO.registeredDate()) : patient.getRegisteredDate());
+        patient.setName(
+                (patientRequestDTO.name() != null
+                        && !patientRequestDTO.name().isEmpty()
+                        && !patientRequestDTO.name().isBlank()
+                ) ? patientRequestDTO.name() : patient.getName());
+        patient.setEmail(
+                (patientRequestDTO.email() != null
+                        && !patientRequestDTO.email().isEmpty()
+                        && !patientRequestDTO.email().isBlank()
+                ) ? patientRequestDTO.email() : patient.getEmail());
+        patient.setAddress(
+                (patientRequestDTO.address() != null
+                        && !patientRequestDTO.address().isEmpty()
+                        && !patientRequestDTO.address().isBlank()
+                ) ? patientRequestDTO.address() : patient.getAddress());
+        patient.setDateOfBirth(
+                (patientRequestDTO.dateOfBirth() != null
+                        && !patientRequestDTO.dateOfBirth().isEmpty()
+                        && !patientRequestDTO.dateOfBirth().isBlank()
+                ) ? LocalDate.parse(patientRequestDTO.dateOfBirth()) : patient.getDateOfBirth());
+        patient.setRegisteredDate(
+                (patientRequestDTO.registeredDate() != null
+                        && !patientRequestDTO.registeredDate().isEmpty()
+                        && !patientRequestDTO.registeredDate().isBlank()
+                ) ? LocalDate.parse(patientRequestDTO.registeredDate()) : patient.getRegisteredDate());
     }
 }
