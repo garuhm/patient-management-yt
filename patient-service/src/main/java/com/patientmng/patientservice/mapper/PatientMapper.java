@@ -28,7 +28,7 @@ public class PatientMapper {
                 .build();
     }
 
-    public static void update(Patient patient, PatientRequestDTO patientRequestDTO) {
+    public static void updateModelWithDTO(Patient patient, PatientRequestDTO patientRequestDTO) {
         patient.setName(
                 (patientRequestDTO.name() != null
                         && !patientRequestDTO.name().isEmpty()
