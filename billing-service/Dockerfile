@@ -10,11 +10,11 @@ COPY src ./src
 
 RUN mvn clean package
 
-FROM openjdk:26-ea AS runner
+FROM openjdk:25-ea AS runner
 
 WORKDIR  /app
 
-COPY --from=builder ./app/target/patient-service-0.0.1-SNAPSHOT.jar ./app.jar
+COPY --from=builder ./app/target/billing-service-0.0.1-SNAPSHOT.jar ./app.jar
 
 EXPOSE 4001
 EXPOSE 9001

@@ -1,0 +1,9 @@
+# where grpc sereer is, port specified inside app config
+# port/service/grpc method
+GRPC localhost:9001/billing.BillingService/CreateBillingAccount
+
+{
+  "patientId": "122333",
+  "name": "John Doe",
+  "email": "john.doe@ex.com"
+}

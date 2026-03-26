@@ -3,11 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.patientmng</groupId>
-        <artifactId>patient-management</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>4.0.4</version>
+        <relativePath/>
     </parent>
+    <groupId>com.patientmng</groupId>
+    <version>0.0.1-SNAPSHOT</version>
     <artifactId>billing-service</artifactId>
     <name>billing-service</name>
     <description>billing-service</description>
@@ -27,6 +29,7 @@
 
     <!-- Align gRPC + protobuf with Spring gRPC BOM (Spring Boot 4). Bump only spring-grpc.version when upgrading. -->
     <properties>
+        <java.version>25</java.version>
         <spring-grpc.version>1.0.2</spring-grpc.version>
     </properties>
 
@@ -71,6 +74,10 @@
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-stub</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-services</artifactId>
         </dependency>
         <dependency>
             <groupId>com.google.protobuf</groupId>

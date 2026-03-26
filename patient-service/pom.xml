@@ -3,11 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.patientmng</groupId>
-        <artifactId>patient-management</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>4.0.4</version>
+        <relativePath/>
     </parent>
+    <groupId>com.patientmng</groupId>
+    <version>0.0.1-SNAPSHOT</version>
     <artifactId>patient-service</artifactId>
     <name>patient-service</name>
     <description>patient-service</description>
@@ -24,6 +26,10 @@
         <tag/>
         <url/>
     </scm>
+
+    <properties>
+        <java.version>26</java.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
