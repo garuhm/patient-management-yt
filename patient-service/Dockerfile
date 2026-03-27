@@ -10,7 +10,7 @@ COPY src ./src
 
 RUN mvn clean package
 
-FROM openjdk:26-ea AS runner
+FROM openjdk:25-ea AS runner
 
 WORKDIR  /app
 
