@@ -39,6 +39,23 @@ Source: `.idea/workspace.xml`
   - If the service connects to `kafka:9092`, the broker can advertise `localhost:9092` back in metadata, which makes the container try to connect to itself instead of the Kafka container.
   - `kafka:29092` keeps broker-to-client communication on the Docker network using the resolvable container hostname.
 
+## patient-service-db
+
+- Run config name: `patient-service-db`
+- Server: `Docker`
+- Build source: Docker image (not built from a Dockerfile)
+- Image tag: `postgres:latest`
+- Container name: `patient-service-db`
+- Network option: `--network internal`
+- Port bindings:
+  - `5000:5432`
+- Environment variables:
+  - `POSTGRES_USER=admin_user`
+  - `POSTGRES_PASSWORD=password`
+  - `POSTGRES_DB=db`
+- Volume bindings:
+  - `C:\Users\garuh\Computer-Science\Coding\Backend\spring-boot-java\patient-management\db-volumes\patient-service:/var/lib/postgresql`
+
 ## analytics-service
 
 - Run config name: `analytics-service`
