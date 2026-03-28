@@ -39,6 +39,22 @@ Source: `.idea/workspace.xml`
   - If the service connects to `kafka:9092`, the broker can advertise `localhost:9092` back in metadata, which makes the container try to connect to itself instead of the Kafka container.
   - `kafka:29092` keeps broker-to-client communication on the Docker network using the resolvable container hostname.
 
+## analytics-service
+
+- Run config name: `analytics-service`
+- Server: `Docker`
+- Build source: `analytics-service/Dockerfile`
+- Image tag: `analytics-service:latest`
+- Container name: `analytics-service`
+- Network option: `--network internal`
+- Port bindings:
+  - `4003:4003`
+- Environment variables:
+  - `SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:29092`
+- Why `kafka:29092` is used:
+  - Analytics runs inside the Docker network, so it must use Kafka's internal listener.
+  - This avoids the broker advertising `localhost:9092` back to the container.
+
 ## kafka
 
 - Run config name: `kafka`
