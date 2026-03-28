@@ -23,8 +23,7 @@ Source: `.idea/workspace.xml`
 - Image tag: `patient-service:latest`
 - Container name: `patient-service`
 - Network option: `--network internal`
-- Port bindings:
-  - `4000:4000`
+- Port bindings: none stored in the run config
 - Environment variables:
   - `SPRING_DATASOURCE_PASSWORD=password`
   - `SPRING_DATASOURCE_URL=jdbc:postgresql://patient-service-db:5432/db`
@@ -32,7 +31,7 @@ Source: `.idea/workspace.xml`
   - `SPRING_JPA_HIBERNATE_DDL_AUTO=update`
   - `SPRING_SQL_INIT_MODE=always`
   - `BILLING_SERVICE_ADDRESS=billing-service`
-  - `BILLING_SERVICE_PORT=9001`
+  - `BILLING_SERVICE_GRPC_PORT=9001`
   - `SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:29092`
 - Why `kafka:29092` is used:
   - The patient-service container must use Kafka's internal Docker listener, not `localhost:9092`.
@@ -71,6 +70,18 @@ Source: `.idea/workspace.xml`
 - Why `kafka:29092` is used:
   - Analytics runs inside the Docker network, so it must use Kafka's internal listener.
   - This avoids the broker advertising `localhost:9092` back to the container.
+
+## api-gateway
+
+- Run config name: `api-gateway`
+- Server: `Docker`
+- Build source: `api-gateway/Dockerfile`
+- Image tag: `api-gateway:latest`
+- Container name: `api-gateway`
+- Network option: `--network internal`
+- Port bindings:
+  - `4004:4004`
+- Environment variables: none stored in the run config
 
 ## kafka
 
