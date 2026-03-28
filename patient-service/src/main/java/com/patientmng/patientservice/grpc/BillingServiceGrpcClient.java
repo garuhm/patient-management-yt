@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class BillingServiceGrpcClient {
     private static final Logger log = LoggerFactory.getLogger(BillingServiceGrpcClient.class);
-    //    provicdes (a?)synchronous clietnt calls to grpc service (billing service)
+    //    provicdes synchronous clietnt calls to grpc service (billing service)
 //    will wait from response from service to continue
     private final BillingServiceGrpc.BillingServiceBlockingStub billingServiceBlockingStub;
 

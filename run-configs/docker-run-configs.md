@@ -34,6 +34,31 @@ Source: `.idea/workspace.xml`
   - `BILLING_SERVICE_ADDRESS=billing-service`
   - `BILLING_SERVICE_GRPC_PORT=9001`
 
+## kafka
+
+- Run config name: `kafka`
+- Server: `Docker`
+- Build source: Docker image (not built from a Dockerfile)
+- Image tag: `apache/kafka:latest`
+- Container name: `kafka`
+- Network option: `--network internal`
+- Port bindings:
+  - `9092:9092`
+  - `9093:9093`
+- Environment variables:
+  - `KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092`
+  - `KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER`
+  - `KAFKA_CONTROLLER_QUORUM_VOTERS=1@localhost:9093`
+  - `KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0`
+  - `KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT`
+  - `KAFKA_LISTENERS=PLAINTEXT://:29092,PLAINTEXT_HOST://:9092,CONTROLLER://:9093`
+  - `KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,CONTROLLER:PLAINTEXT`
+  - `KAFKA_NODE_ID=1`
+  - `KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1`
+  - `KAFKA_PROCESS_ROLES=broker,controller`
+  - `KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1`
+  - `KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1`
+
 ## Notes
 
-- These values were copied from the workspace metadata, not from screenshots.
+- These values were copied from the workspace metadata
