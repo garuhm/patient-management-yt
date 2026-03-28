@@ -16,6 +16,9 @@ spring:
 #    init:
 ##      performs checks on db and entities every app startup
 #      mode: always
-
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
 server:
   port: 4000

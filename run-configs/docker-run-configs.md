@@ -32,7 +32,12 @@ Source: `.idea/workspace.xml`
   - `SPRING_JPA_HIBERNATE_DDL_AUTO=update`
   - `SPRING_SQL_INIT_MODE=always`
   - `BILLING_SERVICE_ADDRESS=billing-service`
-  - `BILLING_SERVICE_GRPC_PORT=9001`
+  - `BILLING_SERVICE_PORT=9001`
+  - `SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:29092`
+- Why `kafka:29092` is used:
+  - The patient-service container must use Kafka's internal Docker listener, not `localhost:9092`.
+  - If the service connects to `kafka:9092`, the broker can advertise `localhost:9092` back in metadata, which makes the container try to connect to itself instead of the Kafka container.
+  - `kafka:29092` keeps broker-to-client communication on the Docker network using the resolvable container hostname.
 
 ## kafka
 
