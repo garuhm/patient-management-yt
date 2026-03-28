@@ -83,6 +83,23 @@ Source: `.idea/workspace.xml`
   - `4004:4004`
 - Environment variables: none stored in the run config
 
+## auth-service
+
+- Run config name: `auth-service`
+- Server: `Docker`
+- Build source: `auth-service/Dockerfile`
+- Image tag: `auth-service:latest`
+- Container name: `auth-service`
+- Network option: `--network internal`
+- Port bindings: none stored in the run config
+- Environment variables:
+  - `SPRING_DATASOURCE_PASSWORD=password`
+  - `SPRING_DATASOURCE_URL=jdbc:postgresql://auth-service-db:5432/db`
+  - `SPRING_DATASOURCE_USERNAME=admin_user`
+  - `SPRING_JPA_HIBERNATE_DDL_AUTO=update`
+  - `SPRING_SQL_INIT_MODE=always`
+  - `JWT_SECRET=<secret-key-here>`
+
 ## auth-service-db
 
 - Run config name: `auth-service-db`

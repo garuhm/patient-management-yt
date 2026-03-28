@@ -2,6 +2,11 @@
 
 Source: each service's `src/main/resources/application.yaml`
 
+## auth-service
+
+- `spring.application.name=auth-service`
+- `server.port=4005`
+
 ## patient-service
 
 - `spring.application.name=patient-service`
@@ -26,11 +31,15 @@ Source: each service's `src/main/resources/application.yaml`
 ## api-gateway
 
 - `spring.application.name=api-gateway`
-- `spring.cloud.gateway.server.webflux.routes[0].id=patient-service-route`
-- `spring.cloud.gateway.server.webflux.routes[0].uri=http://patient-service:4000`
-- `spring.cloud.gateway.server.webflux.routes[0].predicates[0]=Path=/api/v1/patients/**`
-- `spring.cloud.gateway.server.webflux.routes[1].id=api-docs-patient-route`
+- `spring.cloud.gateway.server.webflux.routes[0].id=auth-service-route`
+- `spring.cloud.gateway.server.webflux.routes[0].uri=http://auth-service:4005`
+- `spring.cloud.gateway.server.webflux.routes[0].predicates[0]=Path=/auth/**`
+- `spring.cloud.gateway.server.webflux.routes[0].filters[0]=StripPrefix=1`
+- `spring.cloud.gateway.server.webflux.routes[1].id=patient-service-route`
 - `spring.cloud.gateway.server.webflux.routes[1].uri=http://patient-service:4000`
-- `spring.cloud.gateway.server.webflux.routes[1].predicates[0]=Path=/api-docs/patients`
-- `spring.cloud.gateway.server.webflux.routes[1].filters[0]=RewritePath=/api-docs/patients,/v3/api-docs`
+- `spring.cloud.gateway.server.webflux.routes[1].predicates[0]=Path=/api/v1/patients/**`
+- `spring.cloud.gateway.server.webflux.routes[2].id=api-docs-patient-route`
+- `spring.cloud.gateway.server.webflux.routes[2].uri=http://patient-service:4000`
+- `spring.cloud.gateway.server.webflux.routes[2].predicates[0]=Path=/api-docs/patients`
+- `spring.cloud.gateway.server.webflux.routes[2].filters[0]=RewritePath=/api-docs/patients,/v3/api-docs`
 - `server.port=4004`
