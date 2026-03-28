@@ -83,6 +83,23 @@ Source: `.idea/workspace.xml`
   - `4004:4004`
 - Environment variables: none stored in the run config
 
+## auth-service-db
+
+- Run config name: `auth-service-db`
+- Server: `Docker`
+- Build source: Docker image (not built from a Dockerfile)
+- Image tag: `postgres:latest`
+- Container name: `auth-service-db`
+- Network option: `--network internal`
+- Port bindings:
+  - `5001:5432`
+- Environment variables:
+  - `POSTGRES_USER=admin_user`
+  - `POSTGRES_PASSWORD=password`
+  - `POSTGRES_DB=db`
+- Volume bindings:
+  - `C:\Users\garuh\Computer-Science\Coding\Backend\spring-boot-java\patient-management\db-volumes\auth-service:/var/lib/postgresql`
+
 ## kafka
 
 - Run config name: `kafka`
