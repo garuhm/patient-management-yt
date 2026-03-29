@@ -9,13 +9,15 @@ spring:
             -  id: auth-service-route
                uri: http://auth-service:4005
                predicates:
-               - Path=/auth/**
+                - Path=/auth/**
                filters:
-                 - StripPrefix=1
+                - StripPrefix=1
             - id: patient-service-route
               uri: http://patient-service:4000
               predicates:
                 - Path=/api/v1/patients/**
+              filters:
+                - JwtValidation
             - id: api-docs-patient-route
               uri: http://patient-service:4000
               predicates:
