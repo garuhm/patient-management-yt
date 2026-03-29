@@ -15,6 +15,7 @@ public class KafkaConsumer {
     //    group id = consumer group
     @KafkaListener(topics = "patient", groupId = "analytics-service")
     public void consumeEvent(byte[] event) {
+        log.info("Received event: " + new String(event));
         try {
             PatientEvent patientEvent = PatientEvent.parseFrom(event);
 //            perform business logic here

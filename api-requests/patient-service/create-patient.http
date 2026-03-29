@@ -4,7 +4,7 @@ Authorization: Bearer {{token}}
 
 {
   "name": "gabe ruh",
-  "email": "garuhm3@gmail.com",
+  "email": "garuhm11@gmail.com",
   "address": "904 harsdale way",
   "dateOfBirth": "2008-04-12",
   "registeredDate": "2008-04-12"

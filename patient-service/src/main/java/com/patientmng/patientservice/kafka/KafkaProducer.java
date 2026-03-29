@@ -29,11 +29,13 @@ public class KafkaProducer {
                 .build();
 
 //        event topic is patient
-        try {
-            kafkaTemplate.send("patient", patientEvent.toByteArray());
-        } catch (Exception e) {
-            log.error("Error sending PatientCreated event to Kafka: " + e.getMessage());
-        }
-
+        kafkaTemplate.send("patient", patientEvent.toByteArray())
+                .whenComplete((result, e) -> {
+                    if(e != null) {
+                        log.error("Error sending PatientCreated event to Kafka: " + e.getMessage());
+                    } else {
+                        log.info("PatientCreated event sent to Kafka successfully");
+                    }
+                });
     }
 }
