@@ -81,7 +81,8 @@ Source: `.idea/workspace.xml`
 - Network option: `--network internal`
 - Port bindings:
   - `4004:4004`
-- Environment variables: none stored in the run config
+- Environment variables:
+  - `AUTH_SERVICE_URL=http://auth-service:4005`
 
 ## auth-service
 
@@ -98,7 +99,7 @@ Source: `.idea/workspace.xml`
   - `SPRING_DATASOURCE_USERNAME=admin_user`
   - `SPRING_JPA_HIBERNATE_DDL_AUTO=update`
   - `SPRING_SQL_INIT_MODE=always`
-  - `JWT_SECRET=<secret-key-here>`
+  - `JWT_SECRET=8XS1swskz2PBQH4LxbvrhBKrGYqtEM2q7XKaa7P955x`
 
 ## auth-service-db
 
